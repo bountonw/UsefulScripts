@@ -1,4 +1,4 @@
-set exportFileExtension to "pdf"
+set export_file_extension to "pdf"
 set this_folder to (choose folder with prompt "Pick the folder containing the files to process:") as string
 tell application "System Events"
 	set these_files to every file of folder this_folder
@@ -7,14 +7,14 @@ repeat with i from 1 to the count of these_files
 	set this_file to (item i of these_files as alias)
 	set this_info to info for this_file
 	tell application "Finder"
-		set {fType, nExt} to ({file type, name extension} of file this_file)
-		set documentName to the name of this_file
-		set exportFileName to documentName & "." & exportFileExtension
+		set {file_type, file_extension} to ({file type, name extension} of file this_file)
+		set document_name to the name of this_file
+		set export_file_name to document_name & "." & export_file_extension
 	end tell
-	if nExt contains "pages" then
+	if file_extension contains "pages" then
 		tell application "Pages"
 			open this_file
-			export front document to file (this_folder & exportFileName) as PDF
+			export front document to file (this_folder & export_file_name) as PDF
 			close front document saving no
 		end tell
 	end if
