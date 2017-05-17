@@ -7,7 +7,7 @@ repeat with i from 1 to the count of these_files
 	set this_file to (item i of these_files as alias)
 	set this_info to info for this_file
 	tell application "Finder"
-		set {file_type, file_extension} to ({file type, name extension} of file this_file)
+		set file_extension to (name extension of file this_file)
 		set document_name to the name of this_file
 		set export_file_name to document_name & "." & export_file_extension
 	end tell
