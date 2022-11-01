@@ -1,7 +1,7 @@
 set export_file_extension to "pdf"
 set this_folder to (choose folder with prompt "Pick the folder containing the files to process:") as string
 tell application "System Events"
-	set these_files to every file of folder this_folder
+	set these_files to every file of folder this_folder whose visible is true
 end tell
 repeat with i from 1 to the count of these_files
 	set this_file to (item i of these_files as alias)
